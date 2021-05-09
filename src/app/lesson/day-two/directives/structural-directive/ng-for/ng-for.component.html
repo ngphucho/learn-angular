@@ -1,0 +1,6 @@
+<p style="font-size: 18px; color: blue;">*ngFor</p>
+<ng-container *ngFor="let student of studentList; let stt=index">
+    <div *ngIf="+student.age>=26">
+        {{stt+1}}.Ho ten: {{student.name}} - tuoi: {{student.age}}
+    </div>
+</ng-container>

@@ -1,0 +1,43 @@
+<h2 style="background-color: #fff00080; padding: 10px 0; margin: 0;">Bài Tập 6</h2>
+<div class="container">
+  <!-- FORM THÊM SP -->
+  <h5 class="bg-dark text-light p-3 m-0">Quản lý danh mục sản phẩm</h5>
+  <form class="border p-3">
+    <div class="form-group">
+      <label for="fMaSP">Mã SP</label>
+      <input #inpMaSP type="text" class="form-control" name="fMaSP" id="fMaSP" placeholder="Nhập mã sản phẩm">
+    </div>
+    <div class="form-group">
+      <label for="fTenSP">Tên SP</label>
+      <input #inpTenSP type="text" class="form-control" name="fTenSP" id="fTenSP" placeholder="Nhập tên sản phẩm">
+    </div>
+    <div class="form-group">
+      <label for="fGiaSP">Giá</label>
+      <input #inpGiaSP type="number" class="form-control" name="fGiaSP" id="fGiaSP" placeholder="Nhập giá sản phẩm">
+    </div>
+    <button (click)="handleSubmit(inpMaSP.value, inpTenSP.value, +inpGiaSP.value)" type="button"
+      class="btn btn-success">Thêm sản
+      phẩm</button>
+  </form>
+  <!-- BẢNG DANH SÁCH SP -->
+  <table class="table mt-4">
+    <thead class="bg-dark text-light">
+      <tr>
+        <th>STT</th>
+        <th>Mã SP</th>
+        <th>Tên SP</th>
+        <th>Giá</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let sp of mangDanhSachSanPham; let stt = index">
+        <tr [ngClass]="{'bg-light': stt % 2 === 1}">
+          <td>{{stt + 1}}</td>
+          <td>{{sp.maSP}}</td>
+          <td>{{sp.tenSP}}</td>
+          <td class="text-right">{{sp.giaSP}}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<p>list-movie works!</p>
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let movie of listMovie">
+            <div class="col-sm-3">
+                <app-item-movie [film]="movie" [listLike]="listLikeMovie" (eventOutput)="invokeActionFromChil($event)"></app-item-movie>
+            </div>
+        </ng-container>
+    </div>
+    <!-- <div class="row">
+        <h3>Danh Sach Like</h3>
+        <ng-container *ngFor="let itemLikeMovie of listLikeMovie">
+            <div class="col-sm-12">
+                {{itemLikeMovie.name}} - {{itemLikeMovie.totalLike}}
+            </div>
+        </ng-container>
+    </div> -->
+    <button class="btn btn-danger" (click)="demoViewChildren()">Demo ViewChildren</button>
+</div>
