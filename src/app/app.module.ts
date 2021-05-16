@@ -14,6 +14,8 @@ import { MeterialModule } from './meterial/meterial.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminNavbarComponent } from './layout/admin/admin-navbar/admin-navbar.component';
+// import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AdminNavbarComponent } from './layout/admin/admin-navbar/admin-navbar.c
     BaiTapModule,
     BrowserAnimationsModule,
     MeterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

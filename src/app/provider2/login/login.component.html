@@ -1,4 +1,4 @@
-<form class="example-form">
+<!-- <form class="example-form">
     <label>Account:</label>
     <input #a matInput placeholder="Account">
 
@@ -7,4 +7,47 @@
     <div>
         <button type="button" (click)="login(a.value, p.value)" mat-raised-button color="accent">Accent</button>
     </div>
-</form>
+</form> -->
+<!-- <div class="container">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Account:</mat-label>
+      <input #account matInput placeholder="Account">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Password:</mat-label>
+      <input #password matInput placeholder="Password">
+    </mat-form-field>
+    <div>
+      <button type="button" (click)="login(account.value, password.value)" mat-raised-button
+        color="accent">Login</button>
+    </div>
+  </form>
+</div> -->
+<div class="container">
+  <form [formGroup]='loginForm' (ngSubmit)='login(loginForm)'>
+    <mat-form-field class="example-full-width">
+      <mat-label>Account:</mat-label>
+      <input matInput placeholder="Account" formControlName="account">
+      <mat-error *ngIf="account?.errors&&account?.touched">
+        <span *ngIf="account?.errors?.required">
+          Tài khoản không được rổng !
+        </span>
+        <span *ngIf="account?.errors?.minlength">
+          Tài khoản không được ngắn hơn 6 ký tự !
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Password:</mat-label>
+      <input matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
+    <div>
+      <button [disabled]="loginForm.invalid" type="submit" mat-raised-button color="accent">Login</button>
+    </div>
+  </form>
+</div>

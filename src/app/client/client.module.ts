@@ -10,6 +10,7 @@ import { DayThreeComponent } from '../lesson/day-three/day-three.component';
 import { MoviesComponent } from './movies/movies.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { CardMovieComponent } from './movies/card-movie/card-movie.component';
+import { DetailMovieComponent } from './detail-movie/detail-movie.component';
 // import { NavBarComponent } from '../layout/nav-bar/nav-bar.component';
 
 const routes = [
@@ -25,6 +26,8 @@ const routes = [
       { path: 'lesson2', component: DayTwoComponent },
       { path: 'lesson3', component: DayThreeComponent },
       { path: 'movies', component: MoviesComponent },
+      { path: 'detail-movie/:idMovie', component: DetailMovieComponent },
+      { path: 'detail-movie', component: DetailMovieComponent },
       { path: '**', component: PageNotFoundComponent },
     ],
   },
@@ -37,6 +40,7 @@ const routes = [
     NavBarComponent,
     MoviesComponent,
     CardMovieComponent,
+    DetailMovieComponent,
   ],
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [ClientComponent],

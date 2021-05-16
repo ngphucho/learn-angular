@@ -1,0 +1,84 @@
+<h2 style="background-color: #fff00080; padding: 10px 0; margin: 0;">Bài Tập 7</h2>
+<div class="container">
+  <h3>Bài tập structural directive - CYBERSOFT</h3>
+  <div class="border">
+    <p class="bg-dark p-2 text-light">Quản lý danh mục sản phẩm</p>
+    <div class="p-2 d-flex justify-content-between ">
+      <div class="form-group">
+        <input #maSP type="number" class="form-control" name="maSP" id="maSP" placeholder="MaSP">
+      </div>
+      <div class="form-group">
+        <input #tenSP type="text" class="form-control" name="tenSP" id="tenSP" placeholder="TenSP">
+      </div>
+      <div class="form-group">
+        <input #gia type="number" class="form-control" name="gia" id="gia" placeholder="Gia">
+      </div>
+      <div class="form-group">
+        <button (click)="addProduct(+maSP.value, tenSP.value, +gia.value)" class="btn btn-success">Thêm sản
+          phẩm</button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="border">
+    <p class="bg-dark p-2 text-light">Danh mục sản phẩm</p>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 20%;">Mã SP</th>
+            <th style="width: 40%;">Tên SP</th>
+            <th style="width: 20%;">Giá</th>
+            <th style="width: 20%;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of products | paginate: { itemsPerPage: pageSize, currentPage: p }">
+            <tr>
+              <td>{{item.maSP}}</td>
+              <td>{{item.tenSP}}</td>
+              <td>{{formatCurrencySer.formatVND(item.gia)}}</td>
+              <td>
+                <button (click)="deleteProduct(item.maSP)" class="btn btn-danger">Xóa</button>
+                <button (click)="open(content,item.maSP,item.tenSP,item.gia)" class="btn btn-primary">Sửa</button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="text-center">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Sửa thông tin sản phẩm</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="maSP">Mã sản phẩm</label>
+      <input disabled [(ngModel)]="editInfo.maSP" type="number" class="form-control" name="maSP" id="maSP" placeholder="Mã sản phẩm">
+    </div>
+    <div class="form-group">
+      <label for="tenSP">Tên sản phẩm</label>
+      <input [(ngModel)]="editInfo.tenSP" type="text" class="form-control" name="tenSP" id="tenSP" placeholder="Tên sản phẩm">
+    </div>
+    <div class="form-group">
+      <label for="gia">Giá sản phẩm</label>
+      <input [(ngModel)]="editInfo.gia" type="number" class="form-control" name="gia" id="gia" placeholder="Giá sản phẩm">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="editProduct()">Edit</button>
+  </div>
+</ng-template>

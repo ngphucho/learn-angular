@@ -1,0 +1,13 @@
+<div class="container">
+  <p class="w-50 bg-light p-2 text-center">Tài Xế</p>
+  <div class="row">
+    <ng-container *ngFor='let seat of listSeat'>
+      <div class="col-3 mb-3">
+        <button class="btn seat" [ngClass]="{'btn-secondary':!seat.trangThai, 'btn-success':seat.trangThai}"
+        (click)="changeSeatStatus(seat)">
+          {{seat.soGhe}}
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

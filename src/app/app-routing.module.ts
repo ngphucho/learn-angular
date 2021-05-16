@@ -8,6 +8,8 @@ import { DayTwoComponent } from './lesson/day-two/day-two.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './provider2/login/login.component';
+import { Provider2Module } from './provider2/provider2.module';
+import { SignupComponent } from './provider2/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: LessonComponent },
@@ -17,11 +19,12 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => AdminModule },
   { path: 'client', loadChildren: () => ClientModule },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), Provider2Module],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -14,7 +14,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getDataMovies().subscribe((res) => {
       // console.log(res);
       this.listMovies = res;
-      console.log('listmovie',typeof(this.listMovies));
+      // console.log('listmovie',typeof(this.listMovies));
     });
   }
 }

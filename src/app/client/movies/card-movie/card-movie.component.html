@@ -1,13 +1,15 @@
-<div class="card">
-    <img style="height: 200px;" class="card-img-top" [src]="film.hinhAnh" alt={{film.hinhAnh}} />
+<div class="card" (click)="navigateTo()">
+    <img style="height: 200px;" class="card-img-top" [src]="film?.hinhAnh" alt={{film?.hinhAnh}} />
     <div class="card-body">
-        <h4 class="card-title">{{film.tenPhim}}</h4>
-        <p class="card-text" style="height: 100px;">{{film.moTa}}</p>
+        <h4 class="card-title">{{film?.tenPhim}}</h4>
+        <p class="card-text" style="height: 100px;">{{film?.moTa}}</p>
     </div>
-    <button class="btn btn-success">
+    <!-- <button class="btn btn-success">
         <span style="position: relative;">
             Like
             <span class="likeStyle"></span>
         </span>
-    </button>
+    </button> -->
 </div>
+<a class="btn btn-success" routerLink="/client/detail-movie"
+    [queryParams]="{tenPhim:film?.tenPhim, maPhim:film?.maPhim}">Chi tiết phim</a>

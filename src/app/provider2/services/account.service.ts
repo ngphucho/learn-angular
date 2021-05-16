@@ -9,11 +9,21 @@ import { catchError, tap } from 'rxjs/operators';
 export class AccountService {
   constructor(private httpClient: HttpClient) {}
 
-  login(data: any): Observable<any> {
+  callLoginApi(data: any): Observable<any> {
     const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`;
     return this.httpClient.post(api, data).pipe(
       tap(),
-      catchError(err => {
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
+  }
+
+  callSignupApi(data: any): Observable<any> {
+    const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy`;
+    return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
         return this.handleErr(err);
       })
     );

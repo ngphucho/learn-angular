@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +40,50 @@ export class MovieService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getDataMovies(): Observable<any> {
+  // getDataMovies(): Observable<any> {
+  //   const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`;
+  //   return this.httpClient.get(api);
+  // }
+
+  getDataMovies(): Observable<ObjPhim[]> {
     const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`;
-    return this.httpClient.get(api);
+    return this.httpClient.get<ObjPhim[]>(api).pipe(
+      map((res: ObjPhim[]) => {
+        return res.map((item) => {
+          item.tenPhim = item.tenPhim + 'abc';
+          return item;
+        });
+      })
+    );
   }
+
+  getDetailMovie(data: string): Observable<any> {
+    const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${data}`;
+    return this.httpClient.get(api).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
+  }
+  handleErr(error: any) {
+    switch (error.status) {
+      case 500: {
+        alert(error.error);
+        break;
+      }
+    }
+    return throwError(error);
+  }
+}
+export interface ObjPhim {
+  maPhim: number;
+  tenPhim: string;
+  biDanh: string;
+  trailer: string;
+  hinhAnh: string;
+  moTa: string;
+  maNhom: 'GP01';
+  ngayKhoiChieu: string;
+  danhGia: number;
 }

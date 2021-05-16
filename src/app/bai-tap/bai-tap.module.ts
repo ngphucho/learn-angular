@@ -12,6 +12,9 @@ import { BaiTap4Component } from './bai-tap4/bai-tap4.component';
 import { FormsModule } from '@angular/forms';
 import { BaiTap5Module } from './bai-tap5/bai-tap5.module';
 import { BaiTap6Module } from './bai-tap6/bai-tap6.module';
+import { BaiTap7Module } from './bai-tap7/bai-tap7.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BaiTap8Module } from './bai-tap8/bai-tap8.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,15 @@ import { BaiTap6Module } from './bai-tap6/bai-tap6.module';
     ItemComponent,
     BaiTap4Component,
   ],
-  imports: [CommonModule, FormsModule, BaiTap5Module, BaiTap6Module],
+  imports: [
+    CommonModule,
+    FormsModule,
+    BaiTap5Module,
+    BaiTap6Module,
+    BaiTap7Module,
+    BaiTap8Module,
+    NgxPaginationModule,
+  ],
   exports: [BaiTapComponent],
 })
 export class BaiTapModule {}
