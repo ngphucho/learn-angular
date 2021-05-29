@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -6,10 +12,22 @@ import { AccountService } from '../services/account.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('registerForm') registerFormTag: any;
+
   constructor(private accountSer: AccountService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(this.registerFormTag);
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.registerFormTag);
+  }
+
+  ngOnDestroy(): void {
+    console.log('destroy');
+  }
 
   signup(form: any): void {
     console.log(form);
@@ -36,4 +54,8 @@ export class SignupComponent implements OnInit {
   // ): void {
   //   console.log(form.form.controls.account.value)
   // }
+
+  isSumitedForm() {
+    return this.registerFormTag.submitted;
+  }
 }

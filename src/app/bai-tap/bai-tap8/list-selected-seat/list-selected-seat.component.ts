@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-list-selected-seat',
@@ -7,8 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListSelectedSeatComponent implements OnInit {
   @Input() listSelectedSeat!: any[];
-
+  @Input() numberSelectedSeat!: any;
+  @Output() unselectSeat = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+
+  cancel(data: any) {
+    this.unselectSeat.emit(data);
+  }
 }

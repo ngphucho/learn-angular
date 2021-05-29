@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       account: new FormControl(null, [
         Validators.required,
-        Validators.minLength(6),
+        // Validators.minLength(6),
       ]),
       password: new FormControl('1234567'),
     });
@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
       taiKhoan: value.account,
       matKhau: value.password,
     };
-    console.log(formGroup);
-    // this.accountService.callLoginApi(objLogin).subscribe((res) => {
-    //   if (res) {
-    //     console.log(res);
-    //     alert('Login successfully');
-    //   }
-    // });
+    // console.log(formGroup);
+    this.accountService.callLoginApi(objLogin).subscribe((res) => {
+      if (res) {
+        // console.log(res);
+        localStorage.setItem('accountFE62', JSON.stringify(res));
+        alert('Login successfully');
+      }
+    });
   }
 
   get account(): AbstractControl | null {

@@ -44,7 +44,7 @@ export class BaiTap8Component implements OnInit {
     { soGhe: 35, tenGhe: 'số 35', gia: 100, trangThai: false },
     { soGhe: 36, tenGhe: 'số 36', gia: 100, trangThai: true },
   ];
-  numberSelectedSeat = 0;
+  numberSelectedSeat = this.countSelectedSeat();
 
   constructor() {}
 
@@ -53,11 +53,21 @@ export class BaiTap8Component implements OnInit {
   setSeatStatus(seat: any) {
     const index = this.listSeat.findIndex((item) => item.soGhe === seat.soGhe);
     this.listSeat[index].trangThai = !this.listSeat[index].trangThai;
-    this.numberSelectedSeat = this.listSeat.reduce((tt, seat) => {
+    this.numberSelectedSeat = this.countSelectedSeat();
+  }
+
+  countSelectedSeat() {
+    return this.listSeat.reduce((tt, seat) => {
       if (seat.trangThai) {
         return (tt = tt + 1);
       }
       return tt;
     }, 0);
+  }
+
+  unselectSeat(seat: any){
+    const index = this.listSeat.findIndex((item) => item.soGhe === seat.soGhe);
+    this.listSeat[index].trangThai = !this.listSeat[index].trangThai;
+    this.numberSelectedSeat = this.countSelectedSeat();
   }
 }

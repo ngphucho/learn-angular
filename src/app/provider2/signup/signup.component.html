@@ -1,15 +1,15 @@
-<form #regesterForm="ngForm" (ngSubmit)="signup(regesterForm)" class="container">
+<form #registerForm="ngForm" (ngSubmit)="signup(registerForm)" class="container">
   <h3>Đăng ký tài khoản</h3>
   <div>
     <div class="form-group">
       <span>Tài khoản:</span>
       <input #accountControl="ngModel" ngModel name="account" class="form-control" required minlength="4" />
       <div class="alert alert-danger"
-        *ngIf="regesterForm.controls.account?.errors&&regesterForm.controls.account?.touched">
-        <span *ngIf="regesterForm.controls.account?.errors?.required" class="text text-danger">
+        *ngIf="registerForm.controls.account?.errors&&registerForm.controls.account?.touched">
+        <span *ngIf="registerForm.controls.account?.errors?.required" class="text text-danger">
           Tài khoản không được rổng !
         </span>
-        <span *ngIf="regesterForm.controls.account?.errors?.minlength" class="text text-danger">
+        <span *ngIf="registerForm.controls.account?.errors?.minlength" class="text text-danger">
           Vui long nhap hon 4 ky tu!
         </span>
       </div>
@@ -17,7 +17,7 @@
     <div class="form-group">
       <span>Mật khẩu:</span>
       <input name="password" ngModel class="form-control" />
-      <div class="alert alert-danger" *ngIf="regesterForm.controls.password?.errors">
+      <div class="alert alert-danger" *ngIf="registerForm.controls.password?.errors">
         <span class="text text-danger">
           Tài khoản không được rổng !
         </span>
@@ -26,11 +26,11 @@
     <div class="form-group">
       <span>Email:</span>
       <input name="email" #emailControl="ngModel" ngModel class="form-control" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
-      <div class="alert alert-danger" *ngIf="regesterForm.controls.email?.errors&&regesterForm.controls.email?.touched">
-        <span *ngIf="regesterForm.controls.email?.errors?.required" class="text text-danger">
+      <div class="alert alert-danger" *ngIf="registerForm.controls.email?.errors&&registerForm.controls.email?.touched">
+        <span *ngIf="registerForm.controls.email?.errors?.required" class="text text-danger">
           Email không được rổng !
         </span>
-        <span *ngIf="regesterForm.controls.email?.errors?.pattern" class="text text-danger">
+        <span *ngIf="registerForm.controls.email?.errors?.pattern" class="text text-danger">
           Email khong hop le !
         </span>
       </div>
@@ -38,7 +38,7 @@
     <div class="form-group">
       <span>Số điện thoại:</span>
       <input name="phoneNumber" ngModel class="form-control" />
-      <div class="alert alert-danger" *ngIf="regesterForm.controls.phoneNumber?.errors">
+      <div class="alert alert-danger" *ngIf="registerForm.controls.phoneNumber?.errors">
         <span class="text text-danger">
           Tài khoản không được rổng !
         </span>
@@ -47,7 +47,7 @@
     <div class="form-group">
       <span>Họ tên:</span>
       <input name="fullName" ngModel class="form-control" />
-      <div class="alert alert-danger" *ngIf="regesterForm.controls.fullName?.errors">
+      <div class="alert alert-danger" *ngIf="registerForm.controls.fullName?.errors">
         <span class="text text-danger">
           Tài khoản không được rổng !
         </span>

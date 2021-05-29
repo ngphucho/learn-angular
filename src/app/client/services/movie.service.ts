@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
+  api = environment.apiUrl;
+  private data = new BehaviorSubject({});
+  public movieModal = this.data.asObservable();
   listFilm = [
     {
       id: '1',
@@ -46,7 +50,7 @@ export class MovieService {
   // }
 
   getDataMovies(): Observable<ObjPhim[]> {
-    const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`;
+    const api = `${this.api}/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`;
     return this.httpClient.get<ObjPhim[]>(api).pipe(
       map((res: ObjPhim[]) => {
         return res.map((item) => {
@@ -58,7 +62,7 @@ export class MovieService {
   }
 
   getDetailMovie(data: string): Observable<any> {
-    const api = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${data}`;
+    const api = `${this.api}/api/QuanLyPhim/LayThongTinPhim?MaPhim=${data}`;
     return this.httpClient.get(api).pipe(
       tap(),
       catchError((err) => {
@@ -74,6 +78,10 @@ export class MovieService {
       }
     }
     return throwError(error);
+  }
+
+  changeDataMovieModal(movie: any):void{
+    this.data.next(movie);
   }
 }
 export interface ObjPhim {

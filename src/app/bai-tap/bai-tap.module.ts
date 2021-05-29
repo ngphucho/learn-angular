@@ -15,6 +15,7 @@ import { BaiTap6Module } from './bai-tap6/bai-tap6.module';
 import { BaiTap7Module } from './bai-tap7/bai-tap7.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BaiTap8Module } from './bai-tap8/bai-tap8.module';
+import { BaiTap9Module } from './bai-tap9/bai-tap9.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BaiTap8Module } from './bai-tap8/bai-tap8.module';
     BaiTap6Module,
     BaiTap7Module,
     BaiTap8Module,
+    BaiTap9Module,
     NgxPaginationModule,
   ],
   exports: [BaiTapComponent],

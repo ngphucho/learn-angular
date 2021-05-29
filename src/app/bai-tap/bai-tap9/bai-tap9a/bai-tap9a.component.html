@@ -1,0 +1,48 @@
+<p>bai-tap9a works!</p>
+<p-panel header="Tìm kiếm học viên" [toggleable]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="font-weight-bold">Lớp</h4>
+        <span class="p-fluid">
+          <p-autoComplete [(ngModel)]="selectedCountries" [suggestions]="filteredCountries"
+            (completeMethod)="filterCountry($event)" field="TenLop" [multiple]="true" [dropdown]="true">
+          </p-autoComplete>
+        </span>
+      </div>
+      <div class="col-md-8">
+        <h4 class="font-weight-bold">Tên</h4>
+        <div class="p-field">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <span class="p-float-label">
+              <input type="text" id="inputgroup" pInputText [(ngModel)]="fullName" placeholder="Nhập họ tên">
+              <!-- <label for="inputgroup">InputGroup</label> -->
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-panel>
+<br>
+<p-panel header="Thông tin học viên" [toggleable]="true">
+  <p-table [value]="data" styleClass="p-datatable-striped">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="text-center">MaHV</th>
+        <th class="text-center">TenHV</th>
+        <th class="text-center">MaLop</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td>{{item.MaHV}}</td>
+        <td>{{item.TenHocVien}}</td>
+        <td>{{item.MaLop}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

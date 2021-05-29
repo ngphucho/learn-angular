@@ -1,1 +1,8 @@
-<h2 class="text-warning text-center">Danh sách ghế đã đặt (5)</h2>
+<h2 class="text-warning text-center">Danh sách ghế đã đặt ({{numberSelectedSeat}})</h2>
+<ul *ngFor="let seat of listSelectedSeat">
+  <li *ngIf="seat.trangThai">
+    Ghế: {{seat.tenGhe}} 
+    ${{seat.gia}} 
+    <a href="#" class="text-danger" (click)="cancel(seat)">[Hủy]</a>
+  </li>
+</ul>

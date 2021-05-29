@@ -12,11 +12,13 @@ import { BaiTapModule } from './bai-tap/bai-tap.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeterialModule } from './meterial/meterial.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminNavbarComponent } from './layout/admin/admin-navbar/admin-navbar.component';
 // import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { JwtInterceptor } from './provider2/guards/jwt.interceptor';
+import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
+import { ShareModule } from './share/share.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HelloWorldComponent,
     PageNotFoundComponent,
     AdminNavbarComponent,
+    NavBarComponent,
     // BaiTapComponent
   ],
   imports: [
@@ -36,8 +39,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MeterialModule,
     HttpClientModule,
     NgxPaginationModule,
+    ShareModule
   ],
-  providers: [],
+  providers:[],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

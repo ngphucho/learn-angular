@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from '../provider2/guards/auth.guard';
 
 const routes = [
   {
@@ -11,9 +12,10 @@ const routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
-      }
-    ]
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
 ];
 

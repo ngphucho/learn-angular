@@ -19,6 +19,7 @@ import { HighLightDirective } from './day-two/directives/custom-directive/high-l
 import { DayThreeComponent } from './day-three/day-three.component';
 import { ListMovieComponent } from './day-three/list-movie/list-movie.component';
 import { ItemMovieComponent } from './day-three/item-movie/item-movie.component';
+import { PipeComponent } from './pipe/pipe/pipe.component';
 
 
 
@@ -41,7 +42,8 @@ import { ItemMovieComponent } from './day-three/item-movie/item-movie.component'
     HighLightDirective,
     DayThreeComponent,
     ListMovieComponent,
-    ItemMovieComponent
+    ItemMovieComponent,
+    PipeComponent
   ],
   imports: [
     CommonModule,
